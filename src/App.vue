@@ -4,11 +4,11 @@
       <div class="left-link">
         <router-link to="/" tag="a" class="home">Home</router-link>
         <span class="space">|</span>
-        <router-link to="/about" tag="a">About</router-link>
+        <router-link to="/about" tag="a">Shopping History</router-link>
       </div>
       <div class="right-link">
         <div class="price">
-          <p>$ 59.99</p>
+          <p>$59.99</p>
         </div>
         <router-link to="/about" tag="a">
           <span class="material-icons-two-tone shopping" title="View Bag">
@@ -24,7 +24,7 @@
 <style lang="scss">
 @import "../src/assets/style/my-style.css";
 body {
-  background-color: #e2e8c15e;
+  background-color: wheat;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -37,8 +37,8 @@ body {
 #nav {
   padding: 2rem 5rem;
   width: 100%;
-  background-color: #c1e8e8;
-  box-shadow: 0 1px 5px rgba($color: #000000, $alpha: 0.3);
+  background-color: rgba($color: #000000, $alpha: 0.1);
+  box-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.3);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,13 +50,18 @@ body {
   }
 
   a {
-    color: #777;
+    color: #2c3e507e;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.8rem;
 
     &.router-link-exact-active {
-      color: #000;
+      color: #2c3e50;
     }
+  }
+
+  .home {
+    font-weight: bold;
+    font-size: 2.5rem;
   }
 
   .right-link {
