@@ -5,7 +5,7 @@
       <img :src="require('@/assets/img/fruits.svg')" alt="" />
     </div>
     <div class="items">
-      <fruit />
+      <fruit @fruit-item="$emit('fruit-item', $event)" />
     </div>
   </div>
 </template>
@@ -14,13 +14,14 @@
 import Fruit from "./Fruit.vue";
 export default {
   components: { Fruit },
+  emits: ["fruit-item"],
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
   width: 100%;
-  max-width: 1080px;
+  max-width: 96rem;
   margin: 5rem auto;
   padding: 1rem 5rem;
   background-color: rgba($color: #fff, $alpha: 0.3);
@@ -47,7 +48,7 @@ export default {
     }
 
     img {
-      width: 10rem;
+      width: 8rem;
       margin-left: 3rem;
       opacity: 0.8;
     }
