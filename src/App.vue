@@ -4,13 +4,13 @@
       <div class="left-link">
         <router-link to="/" tag="a" class="home">Home</router-link>
         <span class="space">|</span>
-        <router-link to="/about" tag="a">Shopping History</router-link>
+        <router-link to="/history" tag="a">History</router-link>
       </div>
       <div class="right-link">
         <div class="price">
-          <p>$59.99</p>
+          <p>${{ getTotalPrice }}</p>
         </div>
-        <router-link to="/about" tag="a">
+        <router-link to="/shopping-cart" tag="a">
           <span class="material-icons-two-tone shopping" title="View Bag">
             shopping_bag
           </span>
@@ -20,6 +20,21 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    getTotalPrice() {
+      const list = JSON.parse(JSON.stringify(this.$store.state.data));
+      return list
+        .reduce((total, item) => {
+          return total + item.piece * item.price;
+        }, 0)
+        .toFixed(2);
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 @import "../src/assets/style/my-style.css";
@@ -62,6 +77,7 @@ body {
   .home {
     font-weight: bold;
     font-size: 2.5rem;
+    text-transform: uppercase;
   }
 
   .right-link {
