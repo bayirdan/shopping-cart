@@ -1,20 +1,11 @@
 <template>
   <div class="items">
     <ul>
-      <li>
-        <div class="fruit-name">Orange</div>
+      <li v-for="(fruit, index) in fruits" :key="index">
+        <div class="fruit-name">{{ fruit.name }}</div>
         <div class="right">
-          <span class="price"> $13.99</span>
-          <button class="btn-buy">
-            add
-          </button>
-        </div>
-      </li>
-      <li>
-        <div class="fruit-name">Banana</div>
-        <div class="right">
-          <span class="price"> $13.99</span>
-          <button class="btn-buy">
+          <span class="price"> ${{ fruit.price }}</span>
+          <button class="btn-buy" @click="$emit('fruit-item', fruit)">
             add
           </button>
         </div>
@@ -24,7 +15,15 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters({
+      fruits: "getFruits",
+    }),
+  },
+  emits: ["fruit-item"],
+};
 </script>
 
 <style lang="scss" scoped>
@@ -84,6 +83,10 @@ export default {};
           &:hover {
             cursor: pointer;
             opacity: 0.8;
+          }
+
+          &:active {
+            transform: scale(0.95);
           }
         }
       }
